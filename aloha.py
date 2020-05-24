@@ -95,7 +95,6 @@ class Aloha:
                     active.latency += 1
             else:
                 senders[0].state = False
-                # keep track of the possible latency the node has experienced
 
                 send_lora()
                 self.node_latencies[senders[0].id].append(senders[0].latency)  # the sender is not latent now
