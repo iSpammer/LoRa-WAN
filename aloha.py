@@ -87,6 +87,8 @@ class Aloha:
             # so any active node experiences latency
             for active in actives:
                 active.latency += 1
+            for sender in senders:
+                send_lora()
 
         else:
             if not senders:
