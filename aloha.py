@@ -24,6 +24,9 @@ class Node:
                 # print("node", tmp, "meaw ", self.id)
                 self.state = True
 
+    def send_lora_msg(self):
+        send_lora()
+
 
 class Gateway:
 
@@ -88,7 +91,7 @@ class Aloha:
             for active in actives:
                 active.latency += 1
             for sender in senders:
-                send_lora()
+                sender.send_lora_msg()
 
         else:
             if not senders:
@@ -98,7 +101,7 @@ class Aloha:
             else:
                 senders[0].state = False
 
-                send_lora()
+                senders[0].send_lora_msg()
                 self.node_latencies[senders[0].id].append(senders[0].latency)  # the sender is not latent now
                 senders[0].latency = 0
                 # all other active nodes experience latency again
